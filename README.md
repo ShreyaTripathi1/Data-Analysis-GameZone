@@ -1,5 +1,5 @@
 # Data Analysis on GameZone Orders Data
-This document provides an overview and description of the `gamezone-orders-data.xlsx` dataset.
+This document provides an overview and description of the `gamezone-orders-data.xlsx` (20K-row e-commerce) dataset.
 
 ## Dataset Description
 
