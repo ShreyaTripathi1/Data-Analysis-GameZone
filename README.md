@@ -46,3 +46,20 @@ Based on analysis of this dataset, the following cleaning and preparation steps 
 -   Timestamp columns (`PURCHASE_TS`, `SHIP_TS`) were converted to datetime objects, and rows where conversion failed were removed.
 -   New features were engineered from timestamps, including purchase/ship year, month, day of week, hour, and shipping duration in days.
 -   Categorical features were one-hot encoded for machine learning modeling.
+
+---
+
+# Details:
+*   The dataset contains 21,864 entries and 11 columns, including `USER_ID`, `ORDER_ID`, `PURCHASE_TS`, `SHIP_TS`, `PRODUCT_NAME`, `PRODUCT_ID`, `USD_PRICE`, `PURCHASE_PLATFORM`, `MARKETING_CHANNEL`, `ACCOUNT_CREATION_METHOD`, and `COUNTRY_CODE`.
+*   Initial data loading revealed missing values in `USD_PRICE`, `MARKETING_CHANNEL`, `ACCOUNT_CREATION_METHOD`, and `COUNTRY_CODE`.
+*   Data cleaning involved dropping rows with missing `USD_PRICE` (5 rows), filling missing values in other categorical columns with 'Unknown', and removing 35 duplicate rows.
+*   Categorical columns (`PURCHASE_PLATFORM`, `MARKETING_CHANNEL`, `ACCOUNT_CREATION_METHOD`, `COUNTRY_CODE`) were standardized to lowercase.
+*   The `USD_PRICE` column was successfully converted to a numeric data type (`float64`).
+*   Timestamp columns (`PURCHASE_TS`, `SHIP_TS`) were converted to datetime objects, and rows with invalid entries were dropped.
+*   New time-based features (year, month, day of week, hour for both purchase and ship times) and `shipping_duration_days` were engineered.
+*   The `USD_PRICE` distribution was visualized with a histogram.
+*   Trends over time for purchase year, month, day of week, and hour were visualized with line plots.
+*   Correlations between numerical features were explored with a heatmap, showing generally weak correlations between price and time-related features.
+*   Data was split into training (80%) and testing (20%) sets for model training, resulting in `X_train` (17455, 168), `X_test` (4364, 168), `y_train` (17455,), and `y_test` (4364,).
+*   A `RandomForestRegressor` model was trained to predict `USD_PRICE`.
+*   Model evaluation metrics were calculated: Mean Squared Error (MSE): 150116.22, Root Mean Squared Error (RMSE): 387.45, and R-squared (R2) Score: -0.05.
